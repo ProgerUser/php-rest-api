@@ -26,7 +26,7 @@ class WordList
     // GET ALL
     public function getWords()
     {
-        $sqlQuery = "SELECT id, word, translate, dict_ref, created_at, updated_at FROM " . $this->db_table . "";
+        $sqlQuery = "SELECT id, word, translate, dict_ref, created_at, updated_at FROM " . $this->db_table . " limit 10 ";
         $stmt = $this->conn->prepare($sqlQuery);
         $stmt->execute();
         return $stmt;
