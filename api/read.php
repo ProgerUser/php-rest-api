@@ -3,14 +3,14 @@
     header("Content-Type: application/json; charset=UTF-8");
     
     include_once '../config/database.php';
-    include_once '../class/employees.php';
+    include_once '../class/wordlist.php';
 
     $database = new Database();
     $db = $database->getConnection();
 
-    $items = new Employee($db);
+    $items = new WordList($db);
 
-    $stmt = $items->getEmployees();
+    $stmt = $items->getWords();
     $itemCount = $stmt->rowCount();
 
 
@@ -26,11 +26,11 @@
             extract($row);
             $e = array(
                 "id" => $id,
-                "name" => $name,
-                "email" => $email,
-                "age" => $age,
-                "designation" => $designation,
-                "created" => $created
+                "word" => $word,
+                "translate" => $translate,
+                "dict_ref" => $dict_ref,
+                "created_at" => $created_at,
+                "updated_at" => $updated_at
             );
 
             array_push($employeeArr["body"], $e);

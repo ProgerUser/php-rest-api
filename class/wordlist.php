@@ -1,19 +1,19 @@
 <?php
-    class Employee{
+    class WordList{
 
         // Connection
         private $conn;
 
         // Table
-        private $db_table = "Employee";
+        private $db_table = "word_list";
 
         // Columns
         public $id;
-        public $name;
-        public $email;
-        public $age;
-        public $designation;
-        public $created;
+        public $word;
+        public $translate;
+        public $dict_ref;
+        public $created_at;
+        public $updated_at;
 
         // Db connection
         public function __construct($db){
@@ -21,15 +21,15 @@
         }
 
         // GET ALL
-        public function getEmployees(){
-            $sqlQuery = "SELECT id, name, email, age, designation, created FROM " . $this->db_table . "";
+        public function getWords(){
+            $sqlQuery = "SELECT id, word, translate, dict_ref, created_at, updated_at FROM " . $this->db_table . "";
             $stmt = $this->conn->prepare($sqlQuery);
             $stmt->execute();
             return $stmt;
         }
 
         // CREATE
-        public function createEmployee(){
+        public function createWord(){
             $sqlQuery = "INSERT INTO
                         ". $this->db_table ."
                     SET
@@ -62,14 +62,14 @@
         }
 
         // UPDATE
-        public function getSingleEmployee(){
+        public function getSingleWord(){
             $sqlQuery = "SELECT
                         id, 
-                        name, 
-                        email, 
-                        age, 
-                        designation, 
-                        created
+                        word,
+                        translate, 
+                        dict_ref, 
+                        created_at, 
+                        updated_at
                       FROM
                         ". $this->db_table ."
                     WHERE 
@@ -84,15 +84,15 @@
 
             $dataRow = $stmt->fetch(PDO::FETCH_ASSOC);
             
-            $this->name = $dataRow['name'];
-            $this->email = $dataRow['email'];
-            $this->age = $dataRow['age'];
-            $this->designation = $dataRow['designation'];
-            $this->created = $dataRow['created'];
+            $this->word = $dataRow['word'];
+            $this->translate = $dataRow['translate'];
+            $this->dict_ref = $dataRow['dict_ref'];
+            $this->created_at = $dataRow['created_at'];
+            $this->updated_at = $dataRow['updated_at'];
         }        
 
         // UPDATE
-        public function updateEmployee(){
+        public function updateWord(){
             $sqlQuery = "UPDATE
                         ". $this->db_table ."
                     SET
@@ -128,7 +128,7 @@
         }
 
         // DELETE
-        function deleteEmployee(){
+        function deleteWord(){
             $sqlQuery = "DELETE FROM " . $this->db_table . " WHERE id = ?";
             $stmt = $this->conn->prepare($sqlQuery);
         

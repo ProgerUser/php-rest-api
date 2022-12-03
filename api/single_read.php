@@ -6,26 +6,26 @@
     header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
     include_once '../config/database.php';
-    include_once '../class/employees.php';
+    include_once '../class/wordlist.php';
 
     $database = new Database();
     $db = $database->getConnection();
 
-    $item = new Employee($db);
+    $item = new WordList($db);
 
     $item->id = isset($_GET['id']) ? $_GET['id'] : die();
   
-    $item->getSingleEmployee();
+    $item->getSingleWord();
 
-    if($item->name != null){
+    if($item->word != null){
         // create array
         $emp_arr = array(
-            "id" =>  $item->id,
-            "name" => $item->name,
-            "email" => $item->email,
-            "age" => $item->age,
-            "designation" => $item->designation,
-            "created" => $item->created
+            "id" => $id,
+            "word" => $word,
+            "translate" => $translate,
+            "dict_ref" => $dict_ref,
+            "created_at" => $created_at,
+            "updated_at" => $updated_at
         );
       
         http_response_code(200);
