@@ -35,7 +35,7 @@ class WordList
     // CREATE
     public function createWord()
     {
-        $sqlQuery = "INSERT INTO
+        /*$sqlQuery = "INSERT INTO
                         " . $this->db_table . "
                     SET
                         name = :name, 
@@ -62,7 +62,7 @@ class WordList
 
         if ($stmt->execute()) {
             return true;
-        }
+        }*/
         return false;
     }
 
@@ -100,7 +100,7 @@ class WordList
     // UPDATE
     public function updateWord()
     {
-        $sqlQuery = "UPDATE
+       /* $sqlQuery = "UPDATE
                         " . $this->db_table . "
                     SET
                         name = :name, 
@@ -130,14 +130,14 @@ class WordList
 
         if ($stmt->execute()) {
             return true;
-        }
+        }*/
         return false;
     }
 
     // DELETE
     function deleteWord()
     {
-        $sqlQuery = "DELETE FROM " . $this->db_table . " WHERE id = ?";
+        /*$sqlQuery = "DELETE FROM " . $this->db_table . " WHERE id = ?";
         $stmt = $this->conn->prepare($sqlQuery);
 
         $this->id = htmlspecialchars(strip_tags($this->id));
@@ -146,7 +146,7 @@ class WordList
 
         if ($stmt->execute()) {
             return true;
-        }
+        }*/
         return false;
     }
 
